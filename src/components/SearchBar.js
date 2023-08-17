@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import getToken from '../services/api';
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -9,6 +9,7 @@ function SearchBar() {
   
     const handleSearch = () => {
       console.log('Searching for:', searchTerm);
+     // getToken()
       // Implement your search logic here
     }
   

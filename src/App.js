@@ -9,16 +9,12 @@ import Track from './components/Track';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-       
+        <img src={logo} className="App-logo" alt="logo" />       
         <SearchBar />
       <SearchResults />
       <Playlist />
       <TrackList />
       <Track />
-      </header>
       
   
     </div>
