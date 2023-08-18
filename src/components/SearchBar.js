@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import getToken from '../services/api';
-function SearchBar() {
+function SearchBar(props) {
+
     const [searchTerm, setSearchTerm] = useState('');
+    const {handleSearch} = props;
 
     const handleInputChange = (e) => {
       setSearchTerm(e.target.value);
     }
   
-    const handleSearch = () => {
+    const handleClick = () => {
       console.log('Searching for:', searchTerm);
-     // getToken()
-      // Implement your search logic here
+      handleSearch(searchTerm);
     }
   
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            handleSearch();
+            handleClick();
         }
     }
     
     return (
-      <div style={styles.searchBarContainer}>
+      <div style={styles.searchContainer}>
+        <div style={styles.searchBarContainer}>
         <input
           type="text"
           value={searchTerm}
@@ -29,14 +30,23 @@ function SearchBar() {
           placeholder="Search music, podcasts..."
           style={styles.searchInput}
         />
-        <button onClick={handleSearch} style={styles.searchButton}>
+        <button onClick={handleClick} style={styles.searchButton}>
           <i className="fas fa-search"></i>
         </button>
       </div>
+
+      </div>
+      
     );
   }
   
 const styles = {
+    searchContainer: {
+      margin: '20px 0',
+      display: 'flex',
+      justifyContent: 'center',
+
+    },
     searchBarContainer: {
       display: 'flex',
       width:'350px',

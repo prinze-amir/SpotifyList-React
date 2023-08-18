@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: rgba(74, 118, 62, 0.26);
+height:100vh;
 }
 
 .App-logo {
@@ -12,7 +14,42 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.header{
+  height:50vh;
+  overflow: hidden;
+  background-image: url('http://localhost:3000/resources/images/pexels-photo-5318056.jpeg');
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  color:#fff;
+  font-size: 4em;
+  border: solid 5px black;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.2);
+}
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top:20px;
+  right:20px;
+  position: absolute;
+  color: rgb(0, 121, 81);
+}
+.profile .name{
+  background-color: seashell;
+  padding: 7px;
+  border-radius: 10px;
+}
+.profile-img{
+  width:55px;
+  border-radius:100%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
