@@ -1,7 +1,7 @@
-# Getting Started with Create React App
+# Spotify Playlist Maker App
 
-## Spotify Playlist Maker App
-
+run npm inatall
+don't forget to access spotify api you need a clientid and client secret.  You will need to create config.js file and define and export the variables clientId and clientSecret and redirectURI
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
