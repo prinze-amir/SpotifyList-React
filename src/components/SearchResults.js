@@ -7,13 +7,13 @@ function SearchResults(props) {
 
     return (
         <div>
-            <div>
-                <h2>Search Results</h2>
-            </div>
+            <div className="results">
 
             {loading && <p>Loading...</p>}
             
             <TrackList data={results} />
+            </div>
+
         </div>
     );
 }

@@ -1,56 +1,22 @@
-import { useEffect, useState } from 'react';
-import {clientId, clientSecret} from '../config.js'
-//const redirectUri = 'http://localhost:3000/';
+const getTracks = async (searchTerm, token) => {
+    console.log(token);
+    console.log(searchTerm);
 
-    // const [token, setToken] = useState('');
-
-    // useEffect(() => {
-
-    //     const getToken = async () => {
-
-    //         const result = await fetch('https://accounts.spotify.com/api/token', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type' : 'application/x-www-form-urlencoded',
-    //                 'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
-    //             },
-    //             body: 'grant_type=client_credentials'
-    //         });
-        
-    //         const data = await result.json();
-    //         console.log(data);
-    //         return data.access_token;
-    //     }
-    //     setToken(getToken());
-
-    //     const intervealID = setInterval(() => {
-    //         setToken(getToken());
-    //     }   , 1000 * 60 * 60 );
-
-    //     return () => clearInterval(intervealID);
-
-    // }, []);
-
-const getToken = async () => {
-
-    const result = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/x-www-form-urlencoded',
-            'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
-        },
-        body: 'grant_type=client_credentials'
+try {
+    const result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track&limit=7`, { 
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token }
     });
-
     const data = await result.json();
     console.log(data);
-    return data.access_token;
-    
+    return data.tracks.items;
+} catch (error) {
+    console.log(error);
+}
+ 
 }
 
-const token = await getToken();
-
-const getArtists = async (searchTerm) => {
+const getArtists = async (searchTerm, token) => {
     
     // try {
     //     const result = await fetch(`https://api.spotify.com/artists/0TnOYISbd1XYRBk9myaseg`, {
@@ -66,39 +32,24 @@ const getArtists = async (searchTerm) => {
     // }
 }
 
-const getTracks = async (searchTerm) => {
 
+const getProfile = async (token) => {
     try {
-        const result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, { 
+        const result = await fetch('https://api.spotify.com/v1/me', {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + token }
         });
         const data = await result.json();
         console.log(data);
-        return data.tracks.items;
+        return data;
     } catch (error) {
         console.log(error);
-    }
-     
-}
-
-
-const getProfile = async () => {
-    // try {
-    //     const result = await fetch('https://api.spotify.com/v1/me', {
-    //        // method: 'GET',
-    //         headers: { 'Authorization' : 'Bearer ' + token }
-    //     });
-    //     const data = await result.json();
-    //     console.log(data);
-    //     return data;
-    // } catch (error) {
-    //     console.log(error);
         
-    // }
+    }
 
 }
-    
 
-export {getProfile, getArtists, getTracks, token}
+
+
+export {getProfile, getArtists, getTracks}
 

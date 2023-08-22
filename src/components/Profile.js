@@ -1,4 +1,5 @@
 import React from 'react'
+import { spotifyAuth } from '../Auth/auth'
 
 function Profile(props) {
 
@@ -6,6 +7,7 @@ function Profile(props) {
     <div className="profile">
             <img className="profile-img" src="/resources/images/demo-profile.jpg" alt="profile" />
             <p className='name'>Prince Amir</p>
+            <button onClick={spotifyAuth}>Login to Spotify</button>
     </div>
   )
 }

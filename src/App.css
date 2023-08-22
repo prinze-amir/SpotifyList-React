@@ -1,9 +1,14 @@
 .App {
-  text-align: center;
-  background-color: rgba(74, 118, 62, 0.26);
-height:100vh;
-}
+  height: 100vh;
 
+}
+p, h1, h2, h3, h4 {
+  margin:0
+}
+.container{
+  background-color: rgba(74, 118, 62, 0.26);
+  min-height: 50vh;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,7 +32,7 @@ height:100vh;
 .title{
   color:#fff;
   font-size: 4em;
-  border: solid 5px black;
+  border: solid 5px rgb(255, 255, 255);
   padding: 10px;
   background-color: rgba(0,0,0,0.2);
 }
@@ -64,7 +69,12 @@ height:100vh;
 .App-link {
   color: #61dafb;
 }
-
+.results-playlist{
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin: 20px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

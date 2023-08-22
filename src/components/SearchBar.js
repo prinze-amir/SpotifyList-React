@@ -42,7 +42,7 @@ function SearchBar(props) {
   
 const styles = {
     searchContainer: {
-      margin: '20px 0',
+      padding: '20px 0',
       display: 'flex',
       justifyContent: 'center',
 

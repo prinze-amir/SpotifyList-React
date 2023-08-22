@@ -1,5 +1,7 @@
 import React from 'react'
 import Track from './Track'
+import './track.css'
+
 function TrackList(props) {
   const {data} = props
 
@@ -10,9 +12,9 @@ function TrackList(props) {
   return (
     <div>
       <h2>Tracks</h2>
-      <ul>
+      <ul className="result-list">
       {data.map((track) => (  
-        <li>
+        <li className="list-item" key={track.id}>
           <Track key={track.id} track={track} />
         </li>
       ))}

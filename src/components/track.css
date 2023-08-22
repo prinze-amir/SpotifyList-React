@@ -1,0 +1,29 @@
+.track{
+    border-bottom: solid 1px rgb(51, 202, 20);
+    margin: 5px 0;
+    padding:15px;
+}
+.track-title{
+    font-size: 1.2em;
+    color: #285e3cd2;
+}
+.track-details{
+    display:flex;
+    justify-content: space-between;
+    color: #0b4b0f;
+    padding:5px
+
+}
+.track-details button{
+    background-color: #1db9543c;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5em;
+}
+.result-list{
+    list-style: none;
+    padding:0;
+    background-color: rgba(13, 123, 33, 0.075);
+    border-radius: 8px;;
+}
