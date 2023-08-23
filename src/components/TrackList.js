@@ -10,8 +10,7 @@ function TrackList(props) {
   }
 
   return (
-    <div>
-      <h2>Tracks</h2>
+    <div className="tracklist">
       <ul className="result-list">
       {data.map((track) => (  
         <li className="list-item" key={track.id}>

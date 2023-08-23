@@ -2,17 +2,22 @@ const getTracks = async (searchTerm, token) => {
     console.log(token);
     console.log(searchTerm);
 
-try {
+
     const result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track&limit=7`, { 
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token }
     });
-    const data = await result.json();
-    console.log(data);
+    if (result.ok){
+        const data = await result.json();
+        console.log(data);
     return data.tracks.items;
-} catch (error) {
-    console.log(error);
-}
+    } else {
+        console.log(result)
+        return result
+    }
+    
+    
+
  
 }
 

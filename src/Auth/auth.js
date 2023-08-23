@@ -1,12 +1,11 @@
-import {clientId, clientSecret, redirectURI} from '../config.js'
+import {clientId, clientSecret, redirectURI} from '../config/config.js'
 
 const spotifyAuth = () => {
 const CLIENT_ID = clientId;
 const REDIRECT_URI = redirectURI;
-const SCOPES = ['playlist-modify-public', 'playlist-modify-private', 'user-read-private', 'user-read-email', 'user-library-read', 'user-library-modify', 'user-top-read'];
+const SCOPES = ['playlist-modify-public', 'playlist-modify-private', 'user-read-private', 'user-read-email', 'user-library-read', 'user-library-modify', 'user-top-read',  'streaming'];
 
 const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=code&show_dialog=true`;
-
 // Redirect the user to this URL
 window.location.href = authUrl;
 }
@@ -21,8 +20,6 @@ if (authorizationCode) {
   return authorizationCode
   // You can also initiate your fetchTokens function here
   // fetchTokens(authorizationCode).then(...)
-  //console.log(`code: ${code}`)
-
 } else {
   console.error('No authorization code found in the URL');
   return undefined
@@ -43,6 +40,7 @@ const getSpotifyToken = async (code) => {
       
         const data = await response.json();
         return {
+          scope: data.scope,
           accessToken: data.access_token,
           refreshToken: data.refresh_token,
           expiresIn: data.expires_in,

@@ -1,9 +1,41 @@
 .App {
   height: 100vh;
-
+}
+.button{
+  padding:12px;
+  border-radius: 25px;
+  border:none;
+  background-color: #fff;
+  font-size: 1.5em;
+  box-shadow:1px 4px 9px 0px;
+}
+.button-playlist{
+  padding:10px;
+  border:none;
+  border-radius:25px
 }
 p, h1, h2, h3, h4 {
   margin:0
+}
+.playlists input{
+  padding:10px;
+  border-radius:15px;
+  font-size:1.1em;
+  border:none;
+  margin:5px;
+  min-width:200px;
+}
+.playlists{
+  display: flex;
+    flex-flow: column;
+    gap: 20px;
+    align-items: center;
+}
+.empty{
+  background-color: #0080003d;
+    height: 25vh;
+    width: 100%;
+    border-radius: 8px
 }
 .container{
   background-color: rgba(74, 118, 62, 0.26);
@@ -12,6 +44,19 @@ p, h1, h2, h3, h4 {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.login {
+text-align:center;
+padding:10px;
+}
+.login h1 {
+  color:#508400;
+  text-transform: capitalize;
+}
+.spotify{
+  color:#20b013;
+  border:none;
+  margin-top:10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,7 +68,7 @@ p, h1, h2, h3, h4 {
   height:50vh;
   overflow: hidden;
   background-image: url('http://localhost:3000/resources/images/pexels-photo-5318056.jpeg');
-  background-size: cover;
+  background-size: contain;
   background-position: bottom;
   display: flex;
   justify-content: center;
@@ -74,6 +119,7 @@ p, h1, h2, h3, h4 {
   align-items: start;
   justify-content: center;
   margin: 20px;
+  gap:20px;
 }
 @keyframes App-logo-spin {
   from {

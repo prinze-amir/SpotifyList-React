@@ -1,5 +1,9 @@
 const setCookie =(name, value) => {
-    let expires = 60*60*1000;
+    let now = new Date();
+    let time = now.getTime()
+    time += 3600*1000
+    let expires = time;
+    
     document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure; SameSite=Strict`    
    // document.cookie = name + "=" + (value || "") + expires + "; path=/; Secure; SameSite=Strict";
   }
