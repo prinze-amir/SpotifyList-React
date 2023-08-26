@@ -9,6 +9,18 @@
   font-size: 1.5em;
   box-shadow:1px 4px 9px 0px;
 }
+.loadMore{
+        padding:10px;
+        border-radius: 8px;
+        border: none;
+        margin:20px 0px 40px 0px;
+        font-size:1.2em
+}
+.loadMore:hover{
+        padding:10px;
+        color:#fff;
+        background-color: #12784b;
+}
 .button-playlist{
   padding:10px;
   border:none;
@@ -16,6 +28,34 @@
 }
 p, h1, h2, h3, h4 {
   margin:0
+}
+/* Playlist styling */
+.myPlaylists{
+  display:flex;
+  justify-content: center;
+  gap:10px;
+  flex-flow:row wrap;
+}
+.playlist{
+  background-color:rgb(36 36 36);
+  color:#ffff;
+  text-align: center;
+  max-width:200px;
+}
+.playlist img{
+  width:100%;
+}
+.new-list .list-item{
+  list-style: none;
+  border-bottom: solid #fff;
+  padding: 15px;
+  display: flex;
+  flex-basis:0;
+  justify-content: space-between;
+}
+.new-list ul{
+  margin:0;
+  padding:0px;
 }
 .playlists input{
   padding:10px;
@@ -30,16 +70,26 @@ p, h1, h2, h3, h4 {
     flex-flow: column;
     gap: 20px;
     align-items: center;
+    padding:10px
 }
-.empty{
+.new-list{
   background-color: #0080003d;
-    height: 25vh;
+    min-height: 25vh;
     width: 100%;
-    border-radius: 8px
+    border-radius: 8px;
+    padding:15px
+}
+.warning {
+  text-align:center;
+  text-transform: capitalize;
+  color:red;
+  padding: 8px;
+  ;
+
 }
 .container{
   background-color: rgba(74, 118, 62, 0.26);
-  min-height: 50vh;
+  min-height: 100%;
 }
 .App-logo {
   height: 40vmin;
@@ -65,7 +115,7 @@ padding:10px;
   }
 }
 .header{
-  height:50vh;
+  height:40vh;
   overflow: hidden;
   background-image: url('http://localhost:3000/resources/images/pexels-photo-5318056.jpeg');
   background-size: contain;
@@ -73,23 +123,25 @@ padding:10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap:wrap;
 }
 .title{
   color:#fff;
-  font-size: 4em;
-  border: solid 5px rgb(255, 255, 255);
+  font-size: 6vw;
+  border: solid 5px #12784b;
   padding: 10px;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.503);
 }
 .profile{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  top:20px;
+  /* top:20px;
   right:20px;
-  position: absolute;
+  position: absolute; */
   color: rgb(0, 121, 81);
+  max-width:250px;
 }
 .profile .name{
   background-color: seashell;
@@ -97,7 +149,7 @@ padding:10px;
   border-radius: 10px;
 }
 .profile-img{
-  width:55px;
+  width:50%;
   border-radius:100%;
 }
 .App-header {

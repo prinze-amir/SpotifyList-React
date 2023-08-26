@@ -10,10 +10,11 @@ import { setCookie, getCookie, deleteCookie } from './Utilities/Cookies';
 import Login from './Components/Login'
 function App() {
   const [results, setResults] = useState([]);
+  const [search, setSearch] = useState('')
+  const [next, setNext] = useState('')
   const [playlistName, setPlaylistName] = useState('New Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [Loading, setLoading] = useState(false);
+  const [warning,setWarning] = useState(false);
   const [code, setCode] = useState('');
   const [token, setToken] = useState({});
   const [auth, setAuth] = useState(false);
@@ -21,21 +22,17 @@ function App() {
   let accessCode
   const _code = getCookie('_code');
   const userToken = getCookie('userToken');
-
-  console.log('this is cookie code ' +_code)
-  console.log('this is cookie token ' + userToken)
-  
+  //const user = getProfile(userToken)
+  //get and set code
   useEffect(() => { 
-    
+
     if (code){
-      console.log('checking if code is there because it is = ' + code)
       return
     }
     if (_code){
       return setCode(_code);
      }
     if (code === ''){
-      console.log('checking if code is empty string code:' + code)
        accessCode = getAccessCode();
     }
     if (accessCode){
@@ -44,7 +41,7 @@ function App() {
        console.log('access code is ' +accessCode)
     }
   },[code])
-
+  //set token
   useEffect(() => {
     if (token.accessToken !== undefined){
       console.log('already got a token ' +token)
@@ -52,12 +49,12 @@ function App() {
       return
     }
     if (userToken !== undefined){
-      console.log('wtf is the userToken '+userToken)
+      console.log(' userToken is '+userToken)
       setAuth(true)
       return setToken((prev)=>{
         return {
           ...prev,
-          accessToken: 'bad token',
+          accessToken: userToken,
         }
       });
      }
@@ -81,31 +78,87 @@ function App() {
     }
   }, [code])
 
-  
-
-  // useEffect(()=>{
-  //    setProfile(()=>getProfile(token))
-  //   console.log('this is profile -'+profile)
-  // }, [token])
+  //set profile if user is authenticated
+  useEffect(()=>{
+    //make the async api call and which receives a promise and then set profile
+    const user = getProfile(userToken).then(data=>{
+      setProfile(data)
+    })
+     
+  },[auth])
 
 
   const handleSearch = (searchTerm) => {
-  getTracks(searchTerm, token.accessToken).then((data) => {
-    //checking if api response returns an error
-    if (!data.ok){
-      console.log(data);//see response
-        //this will log user out and delete old token
-        if(data.status === 401){
-          setAuth(false)
-          deleteCookie('userToken')
-          deleteCookie('_code');
-        }
-    }
-    setResults(data);
-    console.log(data);
-  });
+    getTracks(searchTerm, token.accessToken).then((data) => {
+      //checking if api response returns an error
+      if (!data.ok){
+        console.log(data);//see response
+          //this will log user out and delete old token
+          if(data.status === 401){
+            setAuth(false)
+            deleteCookie('userToken')
+            deleteCookie('_code');
+          }
+      }
+      setSearch(searchTerm);
+      setResults(data.items);
+      setNext(data.next)
+    //  console.log(data);
+    });
   }
 
+  const loadMore =()=>{
+     
+     if (next === null){
+      console.log('no more tracks')
+      return 'No More Tracks'
+     }
+    getTracks(search, token.accessToken, next ).then((data) => {
+      //checking if api response returns an error
+      if (!data.ok){
+          //this will log user out and delete old token
+          if(data.status === 401){
+            setAuth(false)
+            deleteCookie('userToken')
+            deleteCookie('_code');
+          }
+      }
+      setResults(data.items);
+      setNext(data.next)
+     // console.log(data);  
+    })
+}
+
+  
+
+  const addTrack = (track)=>{
+
+    const trackExists = playlistTracks.some(existingTrack => existingTrack.id === track.id);
+
+    if (!trackExists) {
+      setPlaylistTracks((prev)=>[...prev, track])
+    } else {
+      setWarning(true)
+       setTimeout(()=>{
+        setWarning(false)
+      }, 3000)
+      //clearInterval(timer);
+      console.log('Track is already in the playlist');
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      clearTimeout();
+    };
+  }, []);
+
+  const removeTrack = (track)=>{
+
+    setPlaylistTracks(prev => prev.filter(playListTrack => playListTrack.id !== track.id));
+
+
+  }
 
   return (
     <div className="App">
@@ -115,10 +168,14 @@ function App() {
         </header>
         {auth && 
         <div className="container">
-          <SearchBar token={token.accessToken} handleSearch={handleSearch}/>
+          <SearchBar token={token.accessToken} handleSearch={handleSearch} />
             <div className="results-playlist">
-               <SearchResults results={results}/>
-              <Playlist auth={auth}/>
+               <SearchResults 
+                  results={results} 
+                  addTrack={addTrack} 
+                  loadMore={loadMore}
+               />
+              <Playlist auth={auth} playlistTracks={playlistTracks} warning={warning} removeTrack={removeTrack} token={token}/>
             </div>
         </div>
         }  { !auth &&

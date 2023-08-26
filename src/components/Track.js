@@ -2,12 +2,12 @@ import React from 'react'
 import './track.css'
 
 function Track(props) {
-  const {track} = props
+  const {track, addTrack} = props
 
-  const addTrack = (track) => {
-    console.log('Add track:', track.name)
+  // const addTrack = () => {
+  //   console.log('Add track:', track.name)
     
-  }
+  // }
 
   return (
     <div className="track">
@@ -19,7 +19,7 @@ function Track(props) {
       <div className="track-details"> 
         <p>By: {track.artists[0].name} </p>
         <p> Album: <em>{track.album.name}</em></p>
-        <button onClick={addTrack}>+</button>
+        <button onClick={()=>{addTrack(track)}}>+</button>
       </div>
       <audio controls name="media"><source src={track.preview_url} type="audio/mpeg"/></audio>      
     </div>

@@ -1,12 +1,13 @@
-const setCookie =(name, value) => {
+  const setCookie = (name, value) => {
     let now = new Date();
-    let time = now.getTime()
-    time += 3600*1000
-    let expires = time;
-    
-    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure; SameSite=Strict`    
-   // document.cookie = name + "=" + (value || "") + expires + "; path=/; Secure; SameSite=Strict";
-  }
+    let time = now.getTime();
+    time += 3600 * 1000;  // 1 hour
+    now.setTime(time);    // Adjust the date object to the new time
+    let expires = now.toUTCString();  // Convert to UTC/GMT format
+
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure; SameSite=Strict`;
+}
+
   
   const getCookie = (name) => {
     const value = "; " + document.cookie;

@@ -14,7 +14,7 @@
 }
 .track-title{
     font-size: 1.2em;
-    color: #285e3cd2;
+    color: #161716d2;
 }
 .track-details{
     display:flex;
@@ -32,6 +32,8 @@
 }
 .results{
     flex-basis: 65%;
+    text-align: center;
+    min-width:500px;
 }
 .result-list{
     list-style: none;
