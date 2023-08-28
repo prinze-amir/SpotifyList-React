@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TrackList from './TrackList';
 
 function SearchResults(props) {
-    const{results, addTrack, loadMore} = props;
+    const{results, addTrack, loadMore, showPlayer} = props;
    
     if (results === undefined) {
         return 
@@ -15,7 +15,9 @@ function SearchResults(props) {
                 {results.length >0 && 
                 <div className="results">
                     <TrackList data={results} addTrack={addTrack} 
-                    loadMore={loadMore}/>
+                    loadMore={loadMore}
+                    showPlayer={showPlayer}
+                    />
                     <button className="loadMore" onClick={loadMore}>Load Please</button>
                 </div>
     }

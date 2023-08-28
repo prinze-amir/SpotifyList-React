@@ -12,13 +12,14 @@ function App() {
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState('')
   const [next, setNext] = useState('')
-  const [playlistName, setPlaylistName] = useState('New Playlist');
-  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [addedTracks, setAddedTracks] = useState([]);
   const [warning,setWarning] = useState(false);
   const [code, setCode] = useState('');
   const [token, setToken] = useState({});
   const [auth, setAuth] = useState(false);
   const [profile, setProfile] = useState({});
+  const [frameSrc, setFrameSrc] = useState('')
+
   let accessCode
   const _code = getCookie('_code');
   const userToken = getCookie('userToken');
@@ -81,12 +82,23 @@ function App() {
   //set profile if user is authenticated
   useEffect(()=>{
     //make the async api call and which receives a promise and then set profile
-    const user = getProfile(userToken).then(data=>{
-      setProfile(data)
-    })
+    if (!auth || Object.keys(profile).length === 0){
+      const user = getProfile(userToken).then(data=>{
+        setProfile(data)
+      })
+    }
+
+    
+    const header = document.querySelector('header')
+    auth ? header.style.height = '40vh': header.style.height = '100vh'
      
   },[auth])
 
+  useEffect(() => {
+    return () => {
+      clearTimeout();
+    };
+  }, []);
 
   const handleSearch = (searchTerm) => {
     getTracks(searchTerm, token.accessToken).then((data) => {
@@ -129,14 +141,12 @@ function App() {
     })
 }
 
-  
-
   const addTrack = (track)=>{
 
-    const trackExists = playlistTracks.some(existingTrack => existingTrack.id === track.id);
+    const trackExists = addedTracks.some(existingTrack => existingTrack.id === track.id);
 
     if (!trackExists) {
-      setPlaylistTracks((prev)=>[...prev, track])
+      setAddedTracks((prev)=>[...prev, track])
     } else {
       setWarning(true)
        setTimeout(()=>{
@@ -147,43 +157,54 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    return () => {
-      clearTimeout();
-    };
-  }, []);
-
   const removeTrack = (track)=>{
 
-    setPlaylistTracks(prev => prev.filter(playListTrack => playListTrack.id !== track.id));
+    setAddedTracks(prev => prev.filter(playListTrack => playListTrack.id !== track.id));
 
+  }
 
+  const removeAll = ()=>{
+    setAddedTracks([])
+  }
+
+  const showPlayer = (track)=>{
+    console.log(track)
+    const frameUrl = `https://open.spotify.com/embed/track/${track.id}`
+    setFrameSrc(frameUrl)
+    document.getElementById('embed-iframe').style.display = 'block'
+
+  }
+
+  const hidePlayer = ()=>{
+    document.getElementById('embed-iframe').style.display = 'none'
   }
 
   return (
     <div className="App">
         <header className="header">
+        <h1 className="title">Spotify ReactList</h1>
             <Profile profile={profile} auth={auth}/>      
-            <h1 className="title">Spotify ReactList</h1>
         </header>
         {auth && 
         <div className="container">
+
           <SearchBar token={token.accessToken} handleSearch={handleSearch} />
+          {<div id="embed-iframe" onClick={hidePlayer}>
+              <button className="close" onClick={hidePlayer} >x</button>
+              <iframe className="embedPlayer" title="spotifyEmbed" src={frameSrc} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>}
             <div className="results-playlist">
                <SearchResults 
                   results={results} 
                   addTrack={addTrack} 
                   loadMore={loadMore}
+                  showPlayer={showPlayer}
                />
-              <Playlist auth={auth} playlistTracks={playlistTracks} warning={warning} removeTrack={removeTrack} token={token}/>
+              <Playlist profile={profile} auth={auth} addedTracks={addedTracks} warning={warning} removeTrack={removeTrack} token={token} removeAll={removeAll} />
             </div>
         </div>
-        }  { !auth &&
-          <div className="container">
-            <Login />
-        </div>
-        }
-        
+        }  
+       
     </div>
   );
 }

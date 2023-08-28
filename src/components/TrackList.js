@@ -3,7 +3,7 @@ import Track from './Track'
 import './track.css'
 
 function TrackList(props) {
-  const {data, addTrack} = props
+  const {data, addTrack, showPlayer} = props
 
  
   if (!data) {
@@ -15,7 +15,7 @@ function TrackList(props) {
       <ul className="result-list">
       {data.map((track) => (  
         <li className="list-item" key={track.id}>
-          <Track key={track.id} track={track} addTrack={addTrack} />
+          <Track key={track.id} track={track} addTrack={addTrack} showPlayer={showPlayer} />
         </li>
       ))}
       </ul>

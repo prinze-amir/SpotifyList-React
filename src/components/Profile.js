@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import React from 'react'
 import { spotifyAuth } from '../Auth/auth'
 
@@ -9,7 +8,6 @@ function Profile(props) {
   let imageSrc
 
   images ? imageSrc = images[1].url : imageSrc = defaultImageSrc
-  console.log(profile)
 
 if (auth){
   return (

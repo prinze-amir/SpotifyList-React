@@ -1,39 +1,50 @@
+.tracklist{
+    padding: 20px;
+}
 .track{
     border-bottom: solid 1px rgb(51, 202, 20);
     margin: 5px 0;
     padding:15px;
+    position:relative;
 }
 .track-header{
     display:flex;
     justify-content:space-between;
-    padding:0 10px;
+    padding:10px;
+    flex-flow:column;
+    max-width:300px;
+    gap:20px;
+    margin:auto;
 }
 .track-header img{
-    border-radius:10px;
-    margin-bottom:10px;
+    border-radius:20px;
+    margin:auto;
 }
 .track-title{
     font-size: 1.2em;
-    color: #161716d2;
+    color: #1f3d1fd2;
 }
 .track-details{
     display:flex;
     justify-content: space-between;
     color: #0b4b0f;
-    padding:5px
-
+    padding:5px;
+    flex-flow:column;
+    max-width:280px;
+    margin:auto;
 }
-.track-details button{
+.trackAdd{
     background-color: #1db9543c;
     border: none;
     cursor: pointer;
     color: #fff;
     font-size: 1.5em;
+    position:absolute;
+    right:6px;
 }
 .results{
     flex-basis: 65%;
     text-align: center;
-    min-width:500px;
 }
 .result-list{
     list-style: none;
@@ -41,61 +52,62 @@
     background-color: rgba(13, 123, 33, 0.075);
     border-radius: 8px;
     box-shadow: 4px 8px 18px 1px #afc4af;
+    position: sticky;
+    min-height: 80vh;
+    overflow-y: auto;
+    max-height:100vh
 }
-audio{
-    width:85%;
-    padding:10px;
+#embed-iframe {
+    display:none;
+    background: #000000ad;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    position: fixed;
+    top: 0;
 }
-audio::-webkit-media-controls-panel{
-    background-color:rgb(0, 0, 0);
-    color:#fff;
+.close {
+    width: fit-content;
+    margin: auto;
+    position: fixed;
+    right: 50px;
+    z-index: 9;
+    top: 30%; 
+    font-size: 2em;
+    padding: 10px 20px;
+    border-radius: 100%;
+    background-color: #10784b ;
+    border:none;
 }
-audio::-webkit-media-controls-mute-button{
-    background-color:#10784b;
-    border-radius:10px;
+.close:active{
+    background-color: #fff;
+    color:red;
+    padding: 7px 17px;
 }
-audio::-webkit-media-controls-play-button{
-    border-radius:50%;
-    background-color: #10784b;
+.close:hover{
+    background-color: #fff;
+    color:red;
 }
-audio::-webkit-media-controls-current-time-display, audio::-webkit-media-controls-time-remaining-display{
-    color:#fff;
+.embedPlayer{
+    width: fit-content;
+    margin: auto;
+    position: fixed;
+    left: 35%;
+    z-index: 9;
+    top: 40%;
 }
-audio::-webkit-media-controls-timeline{
-    background-color: #10784b;
-    border-radius: 25px;
-    margin: 0 9px;
+.playSong,.playlist-save {
+    border-radius: 100%;
+    border:solid 1px black;
+    background: #12784b;
+    height: 42px;
+    width: 46px;
+    padding: 0;
+    box-shadow:1px 5px 6px 0px
 }
-audio::-webkit-media-controls-volume-slider-container{
-    
-}
-audio::-webkit-media-controls-volume-slider{
-border-radius: 10px;    
-background-color:rgb(15, 204, 47);
-margin:0 5px;
-padding:5px
-}
-audio::-webkit-media-controls-seek-back-button{
-    color:#fff;
-    background-color:red;
-}
-audio::-webkit-media-controls-seek-forward-button{
-    color:#fff;
-    background-color:red;
-}
-audio::-webkit-media-controls-fullscreen-button{
-    color:#fff;
-    background-color:red;
-}
-audio::-webkit-media-controls-rewind-button{
-    color:#fff;
-    background-color:red;
-}
-audio::-webkit-media-controls-return-to-realtime-button{
-    color:#fff;
-    background-color:red;
-}
-audio::-webkit-media-controls-toggle-closed-captions-button{
-    color:#fff;
-    background-color:red;
+.playSong:active, .playlist-save:active {
+    background-color: #fff;
+    color: green;
+    width: 43px;
+    height: 40px;
 }
