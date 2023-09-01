@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './Components/SearchBar';
 import SearchResults from './Components/SearchResults';
 import Playlist from './Components/Playlist';
-import {getProfile, getTracks, getArtists} from './Services/api'; 
+import {getProfile, getTracks} from './Services/api'; 
 import { getSpotifyToken, getAccessCode } from './Auth/auth';
 import Profile from './Components/Profile';
 import { setCookie, getCookie, deleteCookie } from './Utilities/Cookies';
-import Login from './Components/Login'
 function App() {
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState('')
@@ -191,7 +190,7 @@ function App() {
           <SearchBar token={token.accessToken} handleSearch={handleSearch} />
           {<div id="embed-iframe" onClick={hidePlayer}>
               <button className="close" onClick={hidePlayer} >x</button>
-              <iframe className="embedPlayer" title="spotifyEmbed" src={frameSrc} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <iframe className="embedPlayer" title="spotifyEmbed" src={frameSrc} width="500" height="550" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>}
             <div className="results-playlist">
                <SearchResults 

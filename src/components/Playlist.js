@@ -10,7 +10,7 @@ function Playlist(props) {
     const [show, setShow] = useState(false);
     const [showUser, setShowUser] = useState(false);
     const [message, setMessage] = useState('')
-    const [addedPlaylist, setAddedPlaylist] = useState(false)
+    const [addedPlaylist, setAddedPlaylist] = useState(false)//consider removing this
     const [userPlaylists, setUserPlaylists] = useState([]);
     const [playlistTracks, setPlaylistTracks] = useState([])
     const {addedTracks, warning, removeTrack, removeAll, token, profile} = props
