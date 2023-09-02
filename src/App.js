@@ -181,7 +181,7 @@ function App() {
   return (
     <div className="App">
         <header className="header">
-        <h1 className="title">Spotify ReactList</h1>
+        <h1 className="title">PlayMySong</h1>
             <Profile profile={profile} auth={auth}/>      
         </header>
         {auth && 
