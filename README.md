@@ -2,6 +2,8 @@
 ## Music App built with React with Spotify API
 
 ![Screenshot of login screen.](/public/resources/screenshots/playsong1.png)
+![Screenshot of main screen.](/public/resources/screenshots/playsong2.png)
+![Screenshot of track search edit playlist screen.](/public/resources/screenshots/playsong3.png)
 
 run npm inatall
 don't forget to access spotify api you need a clientid and client secret.  You will need to create config.js file and define and export the variables clientId and clientSecret and redirectURI
