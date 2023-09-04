@@ -1,4 +1,7 @@
-# Spotify Playlist Maker With React
+# Play My Song
+## Music App built with React with Spotify API
+
+![Screenshot of login screen.](/public/resources/screenshots/playsong1.png)
 
 run npm inatall
 don't forget to access spotify api you need a clientid and client secret.  You will need to create config.js file and define and export the variables clientId and clientSecret and redirectURI
