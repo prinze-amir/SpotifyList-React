@@ -1,9 +1,22 @@
 # Play My Song
-## Music App built with React with Spotify API
+## Music App built with React and Spotify API
+### Login Screen
 
 ![Screenshot of login screen.](/public/resources/screenshots/playsong1.png)
+### Main Screen
 ![Screenshot of main screen.](/public/resources/screenshots/playsong2.png)
+
+### Edit Playlist Screen
 ![Screenshot of track search edit playlist screen.](/public/resources/screenshots/playsong3.png)
+
+in order to run this app you will need to requests clientId and Client Secret from spotify.  https://developer.spotify.com/
+
+Then you need to create a  file and export variables clientId, clientSecret, redirectURI so that they can imported into the auth.js file as follows:
+
+```
+import {clientId, clientSecret, redirectURI} from '../config/config.js'
+
+```
 
 run npm inatall
 don't forget to access spotify api you need a clientid and client secret.  You will need to create config.js file and define and export the variables clientId and clientSecret and redirectURI
