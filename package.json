@@ -1,6 +1,6 @@
 {
   "homepage": "http://prinze-amir.github.io/sSpotifyLst-React",
-  "name": "spotify-lists-react",
+  "name": "SpotifyLst-React",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
