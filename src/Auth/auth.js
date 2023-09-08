@@ -26,7 +26,7 @@ if (authorizationCode) {
   // You can also initiate your fetchTokens function here
   // fetchTokens(authorizationCode).then(...)
 } else {
-  console.error('No authorization code found in the URL');
+  console.log('No authorization code found in the URL');
   return undefined
 }
 }
