@@ -1,10 +1,10 @@
 import React from 'react'
 import { spotifyAuth } from '../Auth/auth'
+import defaultImageSrc from '../images/demo-profile.jpg'
 
 function Profile(props) {
   const {profile, auth} = props
   const images = profile.images
-  const defaultImageSrc = "/resources/images/demo-profile.jpg"
   let imageSrc
 
   images ? imageSrc = images[1].url : imageSrc = defaultImageSrc

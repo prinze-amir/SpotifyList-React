@@ -18,7 +18,7 @@ function SearchResults(props) {
                     loadMore={loadMore}
                     showPlayer={showPlayer}
                     />
-                    <button className="loadMore" onClick={loadMore}>Load Please</button>
+                    <button className="loadMore" onClick={loadMore}>Load More</button>
                 </div>
     }
             </div>

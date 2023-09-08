@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { createNewPlaylist, getUserPlaylist, getPlaylistTracks, editUserPlaylist } from '../Services/api';
+import defaultImg from '../images/defaultPlaylistImage.png'
 
 function Playlist(props) {
     const [currentPlaylist, setCurrentPlaylist] = useState({})
@@ -139,7 +140,7 @@ function Playlist(props) {
         {
           userPlaylists &&  userPlaylists.map((list,index)=>(
                 <div className="playlist" key={'div-'+list.id} onClick={()=>editPlaylist(index)}>
-                    <img key={'img-'+list.id} src={list.images[1] ? list.images[1].url:'/resources/images/defaultPlaylistImage.png'} alt='playlist-img' />
+                    <img key={'img-'+list.id} src={list.images[1] ? list.images[0].url:defaultImg} alt='playlist-img' />
                 <h2 key={'h2-'+list.id}>{list.name}</h2>
                 <p key={'span'+list.id}>{list.tracks.total} Songs</p>
                 </div>

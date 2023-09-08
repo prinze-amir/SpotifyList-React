@@ -82,7 +82,7 @@ function App() {
   useEffect(()=>{
     //make the async api call and which receives a promise and then set profile
     if (!auth || Object.keys(profile).length === 0){
-      const user = getProfile(userToken).then(data=>{
+        getProfile(userToken).then(data=>{
         setProfile(data)
       })
     }

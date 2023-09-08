@@ -131,7 +131,7 @@ padding:10px;
 .header{
   height:40vh;
   overflow: hidden;
-  background-image: url('http://localhost:3000/resources/images/pexels-photo-5318056.jpeg');
+  background-image: url('./images/pexels-photo-5318056.jpeg');
   background-size: contain;
   background-position: bottom;
   display: flex;
