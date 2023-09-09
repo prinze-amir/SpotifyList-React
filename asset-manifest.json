@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/SpotifyList-React/static/css/main.9238f10a.css",
-    "main.js": "/SpotifyList-React/static/js/main.d3ed2d80.js",
+    "main.css": "/SpotifyList-React/static/css/main.a5d919c0.css",
+    "main.js": "/SpotifyList-React/static/js/main.384bdf7a.js",
     "static/js/787.01f076a9.chunk.js": "/SpotifyList-React/static/js/787.01f076a9.chunk.js",
     "static/media/demo-profile.jpg": "/SpotifyList-React/static/media/demo-profile.6b73fd246a999fb8e32e.jpg",
     "static/media/pexels-photo-5318056.jpeg": "/SpotifyList-React/static/media/pexels-photo-5318056.aaa28b8d84eb8de91c88.jpeg",
     "index.html": "/SpotifyList-React/index.html",
-    "main.9238f10a.css.map": "/SpotifyList-React/static/css/main.9238f10a.css.map",
-    "main.d3ed2d80.js.map": "/SpotifyList-React/static/js/main.d3ed2d80.js.map",
+    "main.a5d919c0.css.map": "/SpotifyList-React/static/css/main.a5d919c0.css.map",
+    "main.384bdf7a.js.map": "/SpotifyList-React/static/js/main.384bdf7a.js.map",
     "787.01f076a9.chunk.js.map": "/SpotifyList-React/static/js/787.01f076a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9238f10a.css",
-    "static/js/main.d3ed2d80.js"
+    "static/css/main.a5d919c0.css",
+    "static/js/main.384bdf7a.js"
   ]
 }
