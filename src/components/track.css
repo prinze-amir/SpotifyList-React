@@ -111,3 +111,14 @@
     width: 43px;
     height: 40px;
 }
+
+@media (max-width:500px){
+    .embedPlayer{
+        left: 13%;
+    }
+    .result-list{
+        position: relative;
+        overflow:auto;
+        max-height:100%;
+    }
+}

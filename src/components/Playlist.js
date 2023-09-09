@@ -2,14 +2,15 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { createNewPlaylist, getUserPlaylist, getPlaylistTracks, editUserPlaylist } from '../Services/api';
 import defaultImg from '../images/defaultPlaylistImage.png'
+import Footer from './Footer';
 
 function Playlist(props) {
     const [currentPlaylist, setCurrentPlaylist] = useState({})
     const [playlistName, setPlaylistName] = useState('');
     const [deletedTracks, setDeletedTracks] = useState([])
     const [playlistNameEdit, setPlaylistNameEdit] = useState('');
-    const [show, setShow] = useState(false);
-    const [showUser, setShowUser] = useState(false);
+    const [showNewList, setShowNewList] = useState(false);
+    const [editingList, setEditingList] = useState(false);
     const [message, setMessage] = useState('')
     const [addedPlaylist, setAddedPlaylist] = useState(false)//consider removing this
     const [userPlaylists, setUserPlaylists] = useState([]);
@@ -26,8 +27,8 @@ function Playlist(props) {
 
 },[])
     const handleClick = () => {
-        setShow(true)
-            setShowUser(false)
+        setShowNewList(true)
+            setEditingList(false)
     }
 
     const handleSave = () =>{
@@ -60,7 +61,7 @@ function Playlist(props) {
                 setAddedPlaylist(true)
                 setPlaylistName('')
                 removeAll()
-                setShow(false)
+                setShowNewList(false)
             }
             getUserPlaylist(token.accessToken).then(lists=>{
                 setUserPlaylists(lists.items)
@@ -97,7 +98,7 @@ function Playlist(props) {
             if (data.success){
                 setAddedPlaylist(true)
                 removeAll()
-                setShowUser(false)
+                setEditingList(false)
                 getUserPlaylist(token.accessToken).then(lists=>{
                     setUserPlaylists(lists.items)
                     console.dir(userPlaylists)
@@ -109,8 +110,8 @@ function Playlist(props) {
     }
     const editPlaylist = (index)=>{
         console.log(userPlaylists[index])
-        setShow(false)
-        setShowUser(true)
+        setShowNewList(false)
+        setEditingList(true)
         setCurrentPlaylist(userPlaylists[index])
         getPlaylistTracks(token.accessToken, userPlaylists[index].id ).then(data=>{
           
@@ -130,13 +131,17 @@ function Playlist(props) {
         console.log(deletedTracks)
         setPlaylistTracks(prev => prev.filter(item => item.track.id !== track.track.id));
     }
+    const showList = () =>{
+        const list = document.getElementById('myplaylists')
+        list.style.display = 'block'
+        document.location.href = '#myplaylists';
+    }
    
 
   return (
     <div className="playlist-main">
     <div className="playlists-container">
-        <h2>My Playlists</h2>
-      <div className="myPlaylists">
+      <div id="myplaylists" className="myPlaylists">
         {
           userPlaylists &&  userPlaylists.map((list,index)=>(
                 <div className="playlist" key={'div-'+list.id} onClick={()=>editPlaylist(index)}>
@@ -149,8 +154,8 @@ function Playlist(props) {
        
         </div>
         <button className="button-playlist" onClick={handleClick}>Create New Playlist</button>
-        { show &&
-            <div className="newPlaylists">
+        { showNewList&&
+            <div id="newList" className="newPlaylists">
                 <input name='playlistName' value={playlistName} placeholder="enter playlist name" onChange={(e) => setPlaylistName(e.target.value)} />
                 
                 {addedTracks && <div className="new-list">
@@ -168,8 +173,8 @@ function Playlist(props) {
                  <button  style={styles.button} className="playlist-save" onClick={handleSave}>SAVE</button>
             </div>  
         }    
-        { showUser &&
-            <div className="newPlaylists">
+        { editingList &&
+            <div id="editList" className="newPlaylists">
                 <input name='playlistName' value={playlistNameEdit} placeholder="edit playlist name" onChange={(e) => setPlaylistNameEdit(e.target.value)} />
                 
                 {playlistTracks && <div className="new-list">
@@ -195,6 +200,8 @@ function Playlist(props) {
         }    
        
     </div>
+    <Footer showList={showList} newList={handleClick}/>
+
     </div>
 
   )

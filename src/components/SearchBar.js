@@ -11,6 +11,7 @@ function SearchBar(props) {
     const handleClick = () => {
       console.log('Searching for:', searchTerm);
       handleSearch(searchTerm);
+      document.location.href = '#tracklist';
     }
   
     const handleKeyPress = (e) => {
@@ -20,9 +21,9 @@ function SearchBar(props) {
     }
     
     return (
-      <div style={styles.searchContainer}>
+      <div id="search" style={styles.searchContainer}>
         <div style={styles.searchBarContainer}>
-        <input
+        <input id="searchInput"
           type="text"
           value={searchTerm}
           onChange={handleInputChange}

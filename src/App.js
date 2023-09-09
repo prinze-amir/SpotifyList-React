@@ -177,6 +177,8 @@ function App() {
   const hidePlayer = ()=>{
     document.getElementById('embed-iframe').style.display = 'none'
   }
+  
+
 
   return (
     <div className="App">

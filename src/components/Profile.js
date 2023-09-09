@@ -20,7 +20,7 @@ if (auth){
 }
 return (
   <div className="profile">
-          <button className="button" onClick={spotifyAuth}>Login to Spotify</button>
+          <button className="login-button" onClick={spotifyAuth}>Login to Spotify</button>
   </div>
 )
 }
