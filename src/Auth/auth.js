@@ -1,5 +1,5 @@
 import {clientId, clientSecret, redirectURI} from '../config/config.js'
-import { setCookie, deleteCookie, getCookie } from '../Utilities/Cookies.js'; 
+import { setCookie, getCookie } from '../Utilities/Cookies.js'; 
 
 const spotifyAuth = async () => {
   const verifier = generateCodeVerifier(128);
