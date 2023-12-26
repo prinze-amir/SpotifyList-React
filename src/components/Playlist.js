@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { createNewPlaylist, getUserPlaylist, getPlaylistTracks, editUserPlaylist } from '../Services/api';
+import { createNewPlaylist, getUserPlaylist, getPlaylistTracks, editUserPlaylist } from '../services/api';
 import defaultImg from '../images/defaultPlaylistImage.png'
 import Footer from './Footer';
 

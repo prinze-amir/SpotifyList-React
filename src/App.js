@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
-import {getProfile, getTracks} from './Services/api'; 
+import {getProfile, getTracks} from './services/api'; 
 import { getSpotifyToken, getAccessCode } from './Auth/auth';
 import Profile from './components/Profile';
 import { setCookie, getCookie, deleteCookie } from './Utilities/Cookies';
