@@ -38,7 +38,7 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 #configuration files secrets.
-src/config/
+src/config/keys.js
 # Dependency directories
 node_modules/
 jspm_packages/
@@ -148,7 +148,6 @@ dist
 .env.development.local
 .env.test.local
 .env.production.local
- /src/config.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
