@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import SearchBar from './Components/SearchBar';
-import SearchResults from './Components/SearchResults';
-import Playlist from './Components/Playlist';
+import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
+import Playlist from './components/Playlist';
 import {getProfile, getTracks} from './Services/api'; 
 import { getSpotifyToken, getAccessCode } from './Auth/auth';
-import Profile from './Components/Profile';
+import Profile from './components/Profile';
 import { setCookie, getCookie, deleteCookie } from './Utilities/Cookies';
 function App() {
   const [results, setResults] = useState([]);
