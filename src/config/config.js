@@ -9,6 +9,6 @@ let redirectURI = window.location.origin + '/';
 // } else {
 //     redirectURI = 'https://prinze-amir.github.io/SpotifyList-React/'
 // }
-console.log('redirectUrl is ',redirectURI)
+console.log(redirectURI)
 
 export {clientId, clientSecret, redirectURI}
