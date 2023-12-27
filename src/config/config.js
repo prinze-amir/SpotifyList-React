@@ -1,6 +1,6 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
-let redirectURI = window.location.origin + '/';
+let redirectURI = window.location.href + '/';
 // const ENV = process.env;
 // console.dir(ENV)
 // if (ENV.NODE_ENV === 'development'){
