@@ -1,6 +1,6 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
-const redirectURI = window.location.href
+const redirectURI = window.location.origin + '/';
 // const ENV = process.env;
 // console.dir(ENV)
 // if (ENV.NODE_ENV === 'development'){
@@ -8,6 +8,6 @@ const redirectURI = window.location.href
 // } else {
 //     redirectURI = 'https://prinze-amir.github.io/SpotifyList-React/'
 // }
-console.log(redirectURI)
+console.log(redirectURI, clientId, clientSecret)
 
 export {clientId, clientSecret, redirectURI}
