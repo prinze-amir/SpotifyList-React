@@ -186,7 +186,7 @@ padding:10px;
 }
 .results-playlist{
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   gap:20px;
   position:relative;
