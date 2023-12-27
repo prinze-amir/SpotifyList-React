@@ -57,7 +57,7 @@
     overflow-y: auto;
     max-height:100vh
 }
-#embed-iframe {
+.embed-iframe {
     display:none;
     background: #000000ad;
     width: 100%;
@@ -66,13 +66,20 @@
     position: fixed;
     top: 0;
 }
+.iframe-container{
+    display: flex;
+    width: fit-content;
+    gap: 20px;
+}
+.show-iframe{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
 .close {
     width: fit-content;
-    margin: auto;
-    position: fixed;
-    right: 50px;
+    height:fit-content;
     z-index: 9;
-    top: 30%; 
     font-size: 2em;
     padding: 10px 20px;
     border-radius: 100%;
@@ -91,10 +98,7 @@
 .embedPlayer{
     width: fit-content;
     margin: auto;
-    position: fixed;
-    left: 35%;
     z-index: 9;
-    top: 40%;
 }
 .playSong,.playlist-save {
     border-radius: 100%;
@@ -120,5 +124,9 @@
         position: relative;
         overflow:auto;
         max-height:100%;
+    }
+    .iframe-container{
+        flex-flow:column-reverse;
+        gap: 5px;
     }
 }

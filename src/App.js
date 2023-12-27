@@ -170,12 +170,12 @@ function App() {
     console.log(track)
     const frameUrl = `https://open.spotify.com/embed/track/${track.id}`
     setFrameSrc(frameUrl)
-    document.getElementById('embed-iframe').style.display = 'block'
+    document.getElementById('embed-iframe').classList.add('show-iframe')
 
   }
 
   const hidePlayer = ()=>{
-    document.getElementById('embed-iframe').style.display = 'none'
+    document.getElementById('embed-iframe').classList.remove('show-iframe')
   }
   
 
@@ -190,9 +190,11 @@ function App() {
         <div className="container">
 
           <SearchBar token={token.accessToken} handleSearch={handleSearch} />
-          {<div id="embed-iframe" onClick={hidePlayer}>
-              <button className="close" onClick={hidePlayer} >x</button>
+          {<div id="embed-iframe" className="embed-iframe" onClick={hidePlayer}>
+          <div className="iframe-container">
               <iframe className="embedPlayer" title="spotifyEmbed" src={frameSrc} width="500" height="550" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <button className="close" onClick={hidePlayer} >x</button>
+          </div>             
           </div>}
             <div className="results-playlist">
                <SearchResults 
